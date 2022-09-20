@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis-network.min.css" />
+
+    <title>Sistema Experto de enfermeadad de las palmas</title>
+</head>
+
+<body onload="dibujar_grafica_inicial();">
+    <h1 style="text-align:center;">Enfermedades IA</h1>
+    <div class="container">
+
+        <div style="display:flex; margin-left:150px;">
+            <div class="card" style="width: 18rem; margin: 20px">
+                <img class="card-img-top" src="si.jpg" alt="imagensita" style="width: 18rem; height: 250px" />
+                <div class="card-body">
+                    <h5 class="card-title">Cogollo</h5>
+                    <p class="card-text">
+                        el punto donde hay hojas nuevas y jóvenes. Si esta parte es afectada la planta puede debilitarse y morir.
+                    </p>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem; margin: 20px">
+                <img class="card-img-top" src="Foliolo.png" alt="imagensita" style="width: 18rem; height: 250px" />
+                <div class="card-body">
+                    <h5 class="card-title">Folíolo</h5>
+                    <p class="card-text">
+                        Hoja o parte de una hoja compuesta(cada una de las piezas separadas en que a veces se encuentra dividido el limbo de una hoja).
+                    </p>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem; margin: 20px">
+                <img class="card-img-top" src="flecha.jpg" alt="imagensita" style="width: 18rem; height: 250px" />
+                <div class="card-body">
+                    <h5 class="card-title">Flecha</h5>
+                    <p class="card-text">Forma en punta de la hoja.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+      <div class="container">
+        <hr><p style="font-size:20px;">-  Seleccionar al menos 1 sintoma para que se pueda ver el color graficado en el recorrido correspondiente a su enfermedad.<br>
+        - Para que se seleccione una enfermedad, debe tener 50% o más de síntomas de no ser así se pondrá posibles enfermedades pero no una exacta.</p><hr>
+      </div>
+    </div>
+
+
+    <div style="display: flex; margin: 50px; padding: 20px;">
+
+        <div style="display:inline-block; ">
+
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="check1" name="option1" value="Color marrón-rojizo en las puntas de los foliolos" />
+                <label class="form-check-label" for="check1">Color marrón-rojizo en las puntas de los foliolos</label
+          >
+        </div>
+
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="check2"
+            name="option2"
+            value="Foliolos amarillos en la lámina foliar"
+          />
+          <label class="form-check-label" for="check2"
+            >Foliolos amarillos en la lámina foliar</label
+          >
+        </div>
+
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="check3"
+            name="option3"
+            value="Foliolos secos"
+          />
+          <label class="form-check-label" for="check3">Foliolos secos</label>
+            </div>
+
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="check4" name="option4" value="Perdida de brillo en los frutos" />
+                <label class="form-check-label" for="check4">Perdida de brillo en los frutos</label
+          >
+        </div>
+
+
+
+        
+      </div>
+
+      <div  style="display:inline-block;">
+
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="check7"
+            name="option7"
+            value="Caida de frutos"
+          />
+          <label class="form-check-label" for="check7">Caida de frutos</label>
+            </div>
+
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="check8" name="option8" value="Hojas o Foliolo Amarillo" />
+                <label class="form-check-label" for="check8">Hojas o Foliolo Amarillo</label
+          >
+        </div>
+    
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="check11"
+            name="option11"
+            value="Color marrón-rojizo en las flechas"
+          />
+          <label class="form-check-label" for="check11"
+            >Color marrón-rojizo en las flechas
+          </label>
+            </div>
+
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="check12" name="option12" value="Necrosis o pudrición en la flecha" />
+                <label class="form-check-label" for="check12">Necrosis o pudrición en la flecha
+          </label>
+            </div>
+
+
+
+        </div>
+
+        <div style="display:inline-block;">
+
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="check14" name="option14" value="Foliolos con manchas color marrón" />
+                <label class="form-check-label" for="check14">Foliolos con manchas color marrón</label
+          >
+        </div>
+  
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="check15"
+            name="option15"
+            value="Punto rojo con halo amarillento"
+          />
+          <label class="form-check-label" for="check15"
+            >Punto rojo con halo amarillento</label
+          >
+        </div>
+  
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="check16"
+            name="option16"
+            value="Foliolos con Mancha necrosa con centro marrón oscuro"
+          />
+          <label class="form-check-label" for="check16"
+            >Foliolos con Mancha necrosa con centro marrón oscuro</label
+          >
+        </div>
+  
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="check17"
+            name="option17"
+            value="Foliolos con Mancha color gris con puntos negros"
+          />
+          <label class="form-check-label" for="check17"
+            > Foliolos con Mancha color gris con puntos negros</label
+          >
+        </div>
+
+      </div>
+
+      <div style="display:inline-block;">
+  
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="check20"
+            name="option20"
+            value="Crecimiento lento o detenido de la palma"
+          />
+          <label class="form-check-label" for="check20"
+            >Crecimiento lento o detenido de la palma</label
+          >
+        </div>
+  
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="check21"
+            name="option21"
+            value="Racimos podridos o marchitos"
+          />
+          <label class="form-check-label" for="check21"
+            >Racimos podridos, marchitos o abortan</label
+          >
+        </div>
+  
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="check23"
+            name="Marchitamiento de flores"
+            value="Marchitamiento o aborto de flores"
+          />
+          <label class="form-check-label" for="check23"
+            >Marchitamiento o aborto de inflorescencias (flores)</label
+          >
+        </div>
+  
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="check24"
+            name="option24"
+            value="Aspecto moribundo"
+          />
+          <label class="form-check-label" for="check24"
+            >Aspecto moribundo</label
+          >
+        </div>
+  
+      
+      </div>
+      
+      <div  style="display:inline-block;">
+
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="check25"
+            name="option25"
+            value="Compactacion anormal de las flechas y hojas"
+          />
+          <label class="form-check-label" for="check25"
+            >Compactacion anormal de las flechas y hojas</label
+          >
+        </div>
+
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="check26"
+            name="option26"
+            value="Hojas de color verde-amarillenta"
+          />
+          <label class="form-check-label" for="check26"
+            >Hojas de color verde-amarillenta</label
+          >
+        </div>
+  
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="check27"
+            name="option27"
+            value="Frutos secos"
+          />
+          <label class="form-check-label" for="check27"
+            >Frutos secos</label
+          >
+        </div>
+    
+
+  
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="check30"
+            name="option30"
+            value="Las hojas se desprenden"
+          />
+          <label class="form-check-label" for="check30"
+            >Las hojas se desprenden</label
+          >
+        </div>
+
+
+      </div>
+
+      <div  style="display:inline-block;">
+        
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="check31"
+            name="option31"
+            value="Raquis de la hoja curva que da forma de arco"
+          />
+          <label class="form-check-label" for="check31"
+            >Raquis de la hoja curva que da forma de arco</label
+          >
+        </div>
+        
+
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="check13"
+            name="option13"
+            value="Foliolos con manchas color oliva"
+          />
+          <label class="form-check-label" for="check13"
+            >Foliolos con manchas color oliva
+          </label>
+            </div>
+
+
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="check5" name="option5" value="Secamiento de los racismos" />
+                <label class="form-check-label" for="check5">Secamiento de los racismos
+          </label>
+            </div>
+
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="check" name="option" value="Raices podridas" />
+                <label class="form-check-label" for="check5">Raices podridas
+          </label>
+            </div>
+
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="check" name="option" value="Hojas en el tronco anormalmente pequeñas" />
+                <label class="form-check-label" for="check5">Hojas en el tronco anormalmente pequeñas
+          </label>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col d-flex justify-content-center">
+            <button type="button" onclick="enfermedad();" class="btn btn-outline-primary" value="submit">
+          Encontrar enfermedad
+        </button><br><br>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-6">
+            <div id="mynetwork" style="height: 800px">
+                <div class="vis-network" tabindex="0" style="
+              position: relative;
+              overflow: hidden;
+              touch-action: pan-y;
+              user-select: none;
+              -webkit-user-drag: none;
+              -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+              width: 100%;
+              height: 100%;
+            ">
+                    <canvas style="
+                position: relative;
+                touch-action: none;
+                user-select: none;
+                -webkit-user-drag: none;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                width: 100%;
+                height: 100%;
+                
+              " width="600" height="600"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-4" style="margin-left:190px;">
+            <br>
+            <h1>Resultado</h1>
+            <h3 id="text_enfermedad"></h3>
+            <p id="enfermedad"></p><br>
+            <h3 id="text_enfermedades"></h3>
+            <p id="enfermedades"></p>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis-network.min.js"></script>
+    <script type="text/javascript">
+        let marchitez_sorpresiva = ['Color marrón-rojizo en las puntas de los foliolos', 'Foliolos secos', 'Caida de frutos', 'Raices podridas', 'Foliolos amarillos en la lámina foliar', 'Perdida de brillo en los frutos'];
+
+        let amarillamiento_letal = ['Hojas o Foliolo Amarillo', 'Foliolos secos', 'Necrosis o pudrición en la flecha'];
+
+        let Secamiento_pudrición_flecha = ['Color marrón-rojizo en las flechas', 'Necrosis o pudrición en la flecha', 'Raquis de la hoja curva que da forma de arco', 'Crecimiento lento o detenido de la palma'];
+
+        let secamiento_hojas = ['Foliolos con manchas color oliva', 'Foliolos con manchas color marrón', 'Foliolos con Mancha necrosa con centro marrón oscuro', 'Foliolos con Mancha color gris con puntos negros', 'Punto rojo con halo amarillento'];
+
+        let pudricion_raices_tronco = ['Raices podridas', 'Hojas o Foliolo Amarillo', 'Crecimiento lento o detenido de la palma', 'Racimos podridos o marchitos', 'Marchitamiento o aborto de flores', 'Aspecto moribundo'];
+
+        let anillo_marron = ['Compactacion anormal de las flechas y hojas', 'Hojas de color verde-amarillenta', 'Las hojas se desprenden', 'Racimos podridos o marchitos', 'Frutos secos', 'Marchitamiento o aborto de flores', 'Hojas en el tronco anormalmente pequeñas'];
+
+
+
+        function sintomas() {
+            const check = document.getElementsByClassName('form-check-input');
+            let sint = [];
+            for (let i = 0; i < check.length; i++) {
+                if (check[i].checked) {
+                    sint.push(check[i].value)
+                }
+            }
+            return sint;
+        };
+
+
+        function enfermedad() {
+
+          let sin = sintomas();
+          
+          if (sin.length == 0) {
+                alert('Seleccione los sintomas');
+            }else{
+
+            let posibles_enf = [{
+                'nombre': 'Marchitez sorpresiva',
+                'posibilidad': 0,
+                'probabilidad': 0
+            }, {
+                'nombre': 'Amarillamiento letal',
+                'posibilidad': 0,
+                'probabilidad': 0
+            }, {
+                'nombre': 'Secamiento o pudrición de la flecha',
+                'posibilidad': 0,
+                'probabilidad': 0
+            }, {
+                'nombre': 'Secamiento o añublo de las hojas',
+                'posibilidad': 0,
+                'probabilidad': 0
+            }, {
+                'nombre': 'Pudrición de las raíces y de la base del tronco',
+                'posibilidad': 0,
+                'probabilidad': 0
+            }, {
+                'nombre': 'Anillo marrón',
+                'posibilidad': 0,
+                'probabilidad': 0
+            }]
+
+
+            sin.forEach(sin => {
+
+                if (marchitez_sorpresiva.find(element => element === sin) !== undefined) {
+                    posibles_enf.find(en => en.nombre === 'Marchitez sorpresiva').posibilidad += 1;
+
+                    posibles_enf.find(en => en.nombre === 'Marchitez sorpresiva').probabilidad = (posibles_enf.find(en => en.nombre === 'Marchitez sorpresiva').posibilidad / marchitez_sorpresiva.length) * 100;
+
+                    nodes.find(el => el.nombre === sin).color = '#F7A072';
+                    nodes.find(el => el.nombre === 'Marchitez sorpresiva').color = '#F7A072';
+                    dibujar(nodes, edges);
+
+                }
+
+                if (amarillamiento_letal.find(element => element === sin) !== undefined) {
+                    posibles_enf.find(en => en.nombre === 'Amarillamiento letal').posibilidad += 1;
+
+                    posibles_enf.find(en => en.nombre === 'Amarillamiento letal').probabilidad = (posibles_enf.find(en => en.nombre === 'Amarillamiento letal').posibilidad / amarillamiento_letal.length) * 100;
+
+                    nodes.find(el => el.nombre === sin).color = '#F7A072';
+                    nodes.find(el => el.nombre === 'Amarillamiento letal').color = '#F7A072';
+                    dibujar(nodes, edges);
+
+                }
+
+                if (Secamiento_pudrición_flecha.find(element => element === sin) !== undefined) {
+                    posibles_enf.find(en => en.nombre === 'Secamiento o pudrición de la flecha').posibilidad += 1;
+
+                    posibles_enf.find(en => en.nombre === 'Secamiento o pudrición de la flecha').probabilidad = (posibles_enf.find(en => en.nombre === 'Secamiento o pudrición de la flecha').posibilidad / Secamiento_pudrición_flecha.length) * 100;
+
+                    nodes.find(el => el.nombre === sin).color = '#F7A072';
+                    nodes.find(el => el.nombre === 'Secamiento o pudrición de la flecha').color = '#F7A072';
+                    dibujar(nodes, edges);
+
+                }
+
+                if (secamiento_hojas.find(element => element === sin) !== undefined) {
+                    posibles_enf.find(en => en.nombre === 'Secamiento o añublo de las hojas').posibilidad += 1;
+
+                    posibles_enf.find(en => en.nombre === 'Secamiento o añublo de las hojas').probabilidad = (posibles_enf.find(en => en.nombre === 'Secamiento o añublo de las hojas').posibilidad / secamiento_hojas.length) * 100;
+
+                    nodes.find(el => el.nombre === sin).color = '#F7A072';
+                    nodes.find(el => el.nombre === 'Secamiento o añublo de las hojas').color = '#F7A072';
+                    dibujar(nodes, edges);
+
+                }
+
+                if (pudricion_raices_tronco.find(element => element === sin) !== undefined) {
+                    posibles_enf.find(en => en.nombre === 'Pudrición de las raíces y de la base del tronco').posibilidad += 1;
+
+                    posibles_enf.find(en => en.nombre === 'Pudrición de las raíces y de la base del tronco').probabilidad = (posibles_enf.find(en => en.nombre === 'Pudrición de las raíces y de la base del tronco').posibilidad / pudricion_raices_tronco.length) * 100;
+
+                    nodes.find(el => el.nombre === sin).color = '#F7A072';
+                    nodes.find(el => el.nombre === 'Pudrición de las raíces y de la base del tronco').color = '#F7A072';
+                    dibujar(nodes, edges);
+
+                }
+
+                if (anillo_marron.find(element => element === sin) !== undefined) {
+                    posibles_enf.find(en => en.nombre === 'Anillo marrón').posibilidad += 1;
+
+                    posibles_enf.find(en => en.nombre === 'Anillo marrón').probabilidad = (posibles_enf.find(en => en.nombre === 'Anillo marrón').posibilidad / anillo_marron.length) * 100;
+
+                    nodes.find(el => el.nombre === sin).color = '#F7A072';
+                    nodes.find(el => el.nombre === 'Anillo marrón').color = '#F7A072';
+                    dibujar(nodes, edges);
+
+                }
+
+
+            });
+
+            posibles_enf.sort((a,b) => {
+              if(a.probabilidad > b.probabilidad){
+                return -1;
+              }
+
+              if( a.probabilidad<b.probabilidad){
+                return 1;
+              }
+
+              return 0;
+
+            });
+
+            
+            if(mas_30(posibles_enf)){
+              
+              if(posibles_enf[0].probabilidad >= 50){
+              document.getElementById('text_enfermedad').innerHTML = "Enfermedad más probable"
+              document.getElementById('enfermedad').innerHTML = posibles_enf[0].nombre;
+              }
+              let pos_enf = "";
+              for(let i=0;i<posibles_enf.length;i++){
+                console.log(posibles_enf[i]);
+
+                if(posibles_enf[i].nombre ===  document.getElementById('enfermedad').textContent ){
+                  continue;
+                }
+
+                if(posibles_enf[i].probabilidad>30){
+                  document.getElementById('text_enfermedades').innerHTML = 'Otras posibles enfermedades';
+                  pos_enf += posibles_enf[i].nombre + "<br>";
+                }
+              }
+              document.getElementById('enfermedades').innerHTML = pos_enf;
+              
+            }else{
+              alert("Ingrese más sintomas");
+            }
+
+
+          }
+
+        };
+
+
+        function mas_30(enfermedades){
+          for(let i=0;i<enfermedades.length;i++){
+              if(enfermedades[i].probabilidad>30){
+                return true;
+              }
+            }
+            return false;
+        }
+
+        let nodes = [];
+        let edges = [];
+        let network = null;
+
+
+        function destroy() {
+            nodes = [];
+            edges = [];
+            if (network !== null) {
+                network.destroy();
+                network = null;
+            }
+        }
+
+        function dibujar(nodes, edges) {
+            var container = document.getElementById("mynetwork");
+            var data = {
+                nodes: nodes,
+                edges: edges,
+            };
+
+            var options = {
+
+                nodes: {
+                    size: 500,
+                    font: {
+                        size: 30
+                    }
+                },
+                edges: {
+                    smooth: {
+                        type: "cubicBezier",
+
+                        roundness: 0.4,
+                    }
+                },
+                layout: {
+                    hierarchical: {
+                        direction: 'LR'
+                    }
+                },
+                physics: false,
+            };
+            network = new vis.Network(container, data, options);
+        }
+
+        function dibujar_grafica_inicial() {
+            destroy();
+
+            nodes.push({
+                id: 1,
+                label: 'CMRPF',
+                color: '#01FDF6',
+                'nombre': 'Color marrón-rojizo en las puntas de los foliolos'
+            });
+
+            nodes.push({
+                id: 2,
+                label: 'FS',
+                color: '#01FDF6',
+                'nombre': 'Foliolos secos'
+            });
+
+            nodes.push({
+                id: 3,
+                label: 'CF',
+                color: '#01FDF6',
+                'nombre': 'Caida de frutos'
+            });
+
+            nodes.push({
+                id: 4,
+                label: 'RP',
+                color: '#01FDF6',
+                'nombre': 'Raices podridas'
+            });
+
+            nodes.push({
+                id: 5,
+                label: 'FALF',
+                color: '#01FDF6',
+                'nombre': 'Foliolos amarillos en la lámina foliar'
+            });
+
+            nodes.push({
+                id: 6,
+                label: 'PBF',
+                color: '#01FDF6',
+                'nombre': 'Perdida de brillo en los frutos'
+            });
+
+            nodes.push({
+                id: 7,
+                label: 'HFA',
+                color: '#01FDF6',
+                'nombre': 'Hojas o Foliolo Amarillo'
+            });
+
+            nodes.push({
+                id: 8,
+                label: 'NPF',
+                color: '#01FDF6',
+                'nombre': 'Necrosis o pudrición en la flecha'
+            });
+
+            nodes.push({
+                id: 9,
+                label: 'CMRF',
+                color: '#01FDF6',
+                'nombre': 'Color marrón-rojizo en las flechas'
+            });
+
+            nodes.push({
+                id: 10,
+                label: 'RHC',
+                color: '#01FDF6',
+                'nombre': 'Raquis de la hoja curva que da forma de arco'
+            });
+
+            nodes.push({
+                id: 11,
+                label: 'CLDP',
+                color: '#01FDF6',
+                'nombre': 'Crecimiento lento o detenido de la palma'
+            });
+
+            nodes.push({
+                id: 12,
+                label: 'FMCO',
+                color: '#01FDF6',
+                'nombre': 'Foliolos con manchas color oliva'
+            });
+
+            nodes.push({
+                id: 13,
+                label: 'FMCM',
+                color: '#01FDF6',
+                'nombre': 'Foliolos con manchas color marrón'
+            });
+
+            nodes.push({
+                id: 14,
+                label: 'FMNM',
+                color: '#01FDF6',
+                'nombre': 'Foliolos con Mancha necrosa con centro marrón oscuro'
+            });
+
+            nodes.push({
+                id: 15,
+                label: 'FMGN',
+                color: '#01FDF6',
+                'nombre': 'Foliolos con Mancha color gris con puntos negros'
+            });
+
+            nodes.push({
+                id: 16,
+                label: 'PRHA',
+                color: '#01FDF6',
+                'nombre': 'Punto rojo con halo amarillento'
+            });
+
+            nodes.push({
+                id: 17,
+                label: 'RPM',
+                color: '#01FDF6',
+                'nombre': 'Racimos podridos o marchitos'
+            });
+
+            nodes.push({
+                id: 18,
+                label: 'MAF',
+                color: '#01FDF6',
+                'nombre': 'Marchitamiento o aborto de flores'
+            });
+
+            nodes.push({
+                id: 19,
+                label: 'AM',
+                color: '#01FDF6',
+                'nombre': 'Aspecto moribundo'
+            });
+
+            nodes.push({
+                id: 20,
+                label: 'AM',
+                color: '#01FDF6',
+                'nombre': 'Compactacion anormal de las flechas y hojas'
+            });
+
+            nodes.push({
+                id: 21,
+                label: 'HCVA',
+                color: '#01FDF6',
+                'nombre': 'Hojas de color verde-amarillenta'
+            });
+
+            nodes.push({
+                id: 22,
+                label: 'HD',
+                color: '#01FDF6',
+                'nombre': 'Las hojas se desprenden'
+            });
+
+            nodes.push({
+                id: 23,
+                label: 'FS',
+                color: '#01FDF6',
+                'nombre': 'Frutos secos'
+            });
+
+            nodes.push({
+                id: 24,
+                label: 'HTAP',
+                color: '#01FDF6',
+                'nombre': 'Hojas en el tronco anormalmente pequeñas'
+            });
+
+            nodes.push({
+                id: 25,
+                label: 'MS',
+                color: '#01FDF6',
+                'nombre': 'Marchitez sorpresiva'
+            });
+
+            nodes.push({
+                id: 26,
+                label: 'AL',
+                color: '#01FDF6',
+                'nombre': 'Amarillamiento letal'
+            });
+
+            nodes.push({
+                id: 27,
+                label: 'SPF',
+                color: '#01FDF6',
+                'nombre': 'Secamiento o pudrición de la flecha'
+            });
+
+            nodes.push({
+                id: 28,
+                label: 'SAH',
+                color: '#01FDF6',
+                'nombre': 'Secamiento o añublo de las hojas'
+            });
+
+            nodes.push({
+                id: 29,
+                label: 'PRBT',
+                color: '#01FDF6',
+                'nombre': 'Pudrición de las raíces y de la base del tronco'
+            });
+
+            nodes.push({
+                id: 30,
+                label: 'AM',
+                color: '#01FDF6',
+                'nombre': 'Anillo marrón'
+            });
+
+
+            for (let i = 0; i < 24; i++) {
+
+                nodes[i]["level"] = 0;
+            }
+
+            for (let i = 24; i < 30; i++) {
+                nodes[i]["level"] = 2;
+            }
+
+
+            edges.push({
+                from: 1,
+                to: 25
+            });
+            edges.push({
+                from: 2,
+                to: 25
+            });
+            edges.push({
+                from: 3,
+                to: 25
+            });
+            edges.push({
+                from: 4,
+                to: 25
+            });
+            edges.push({
+                from: 5,
+                to: 25
+            });
+            edges.push({
+                from: 6,
+                to: 25
+            });
+
+            edges.push({
+                from: 7,
+                to: 26
+            });
+            edges.push({
+                from: 2,
+                to: 26
+            });
+            edges.push({
+                from: 8,
+                to: 26
+            });
+
+            edges.push({
+                from: 9,
+                to: 27
+            });
+            edges.push({
+                from: 10,
+                to: 27
+            });
+            edges.push({
+                from: 11,
+                to: 27
+            });
+            edges.push({
+                from: 8,
+                to: 27
+            });
+
+            edges.push({
+                from: 12,
+                to: 28
+            });
+            edges.push({
+                from: 13,
+                to: 28
+            });
+            edges.push({
+                from: 14,
+                to: 28
+            });
+            edges.push({
+                from: 15,
+                to: 28
+            });
+            edges.push({
+                from: 16,
+                to: 28
+            });
+
+            edges.push({
+                from: 17,
+                to: 29
+            });
+            edges.push({
+                from: 18,
+                to: 29
+            });
+            edges.push({
+                from: 19,
+                to: 29
+            });
+            edges.push({
+                from: 4,
+                to: 29
+            });
+            edges.push({
+                from: 7,
+                to: 29
+            });
+            edges.push({
+                from: 11,
+                to: 29
+            });
+
+            edges.push({
+                from: 20,
+                to: 30
+            });
+            edges.push({
+                from: 21,
+                to: 30
+            });
+            edges.push({
+                from: 22,
+                to: 30
+            });
+            edges.push({
+                from: 23,
+                to: 30
+            });
+            edges.push({
+                from: 24,
+                to: 30
+            });
+            edges.push({
+                from: 17,
+                to: 30
+            });
+            edges.push({
+                from: 18,
+                to: 30
+            });
+            dibujar(nodes, edges);
+
+        }
+    </script>
+
+    <!--JavaScript Bundle with Popper-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+
+</html>
